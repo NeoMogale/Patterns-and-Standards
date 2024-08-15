@@ -18,6 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
+.vs/
 
 # ignore .json files
 *.json
