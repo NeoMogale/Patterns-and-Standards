@@ -36,7 +36,8 @@ TelemetryPortal_MVC.Repositories: Contains repository implementations, including
 TelemetryPortal_MVC.Models: Defines the data models used throughout the application.
 TelemetryPortal_MVC.Web: The main web application, responsible for the user interface and controllers.
 
-### Future Enhancements
+### Future Enhancements:
+
 Unit Testing: Adding unit tests for repository and controller layers.
 Role-Based Access Control: Implementing user roles to manage access levels within the application.
 API Integration: Exposing data management functionalities through a RESTful API.
