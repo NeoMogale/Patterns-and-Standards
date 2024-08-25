@@ -27,17 +27,15 @@ Clean Code: Ensure adherence to coding standards and best practices.
 Modularity: Maintain separation of concerns for easier maintenance and scalability.
 Security: Ensure that no credentials are stored on GitHub.
 
-### To the client
-#### Getting Started - Prerequisites:
-
-Before you begin, ensure you have the following installed:
+#### Prerequisites:
+Before you begin, the users need to follow these steps:
 
 .NET 8.0 SDK
 SQL Server (for database management)
 Visual Studio 2022 (for development and running the application)
 
 ### Installation and Setup
-Clone your Repositoryfrom GitHub, by using git clone command.
+Clone your Repositoryfrom GitHub, by using the git clone command.
 Configure your Database: Update the appsettings.json file with your own SQL Server connection string.
 Apply Migrations, using the following command to apply database migrations.
 #### dotnet ef database update
@@ -47,9 +45,15 @@ Launch and Run your application using Visual Studio.
 The application is organized into the following projects:
 
 TelemetryPortal_MVC.Data: Handles the database context and migrations.
-TelemetryPortal_MVC.Repositories: Contains repository implementations, including both generic and specific repositories.
+TelemetryPortal_MVC.Repositories: Contains repository implementations, including the generic and specific repositories, namely client and project class repositories. Their interfaces are also included in this pack. 
 TelemetryPortal_MVC.Models: Defines the data models used throughout the application.
 TelemetryPortal_MVC.Web: The main web application, responsible for the user interface and controllers.
+
+### Hosting the MVC Application:
+The Telemetry Management Portal Application was published via Visual Studio and deployed to Azure.
+
+![azure_image](https://github.com/user-attachments/assets/08b9bd48-8bbf-4d2c-b894-4a932a25d545)
+
 
 ### Future Enhancements:
 
@@ -58,4 +62,26 @@ Unit Testing: Adding unit tests for repository and controller layers.
 Role-Based Access Control: Implementing user roles to manage access levels within the application.
 
 API Integration: Exposing data management functionalities through a RESTful API.
+
+### Using the Application:
+#### Manage user roles and access:
+New user should Register.
+Then proceed to Account Comfirmation.
+Existing users prooced to Login.
+
+#### Manage Projects:
+Navigate to the Projects section.
+Create, view, edit, or delete projects as needed.
+
+#### Manage Clients:
+Navigate to the Clients section.
+Manage client information associated with your projects.
+
+### Link to Resource Group:
+
+### Link to API (Deployed):
+https://cmpg323telemetryportalmvc.azurewebsites.net/
+
+### Havard Reference List:
+https://github.com/NeoMogale/CMPG323-Project-3--35407972/blob/main/Project%203%20Reference%20List.docx
 
