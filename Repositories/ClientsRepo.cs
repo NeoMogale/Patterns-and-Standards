@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using TelemetryPortal_MVC.Data;
 using TelemetryPortal_MVC.Models;
@@ -11,55 +10,56 @@ using TelemetryPortal_MVC.Models;
 
 namespace TelemetryPortal_MVC.Repositories
 {
-    public class ClientsRepo : IClientsRepo
+    public class ClientsRepo : GenericRepo<Client>, IClientsRepo
     {
+        public ClientsRepo(TechtrendsContext context) : base(context) { }
 
-        private readonly TechtrendsContext _context;
-        public ClientsRepo(TechtrendsContext context)
-        {
-            _context = context;
-        }
+       
         public async Task<List<Client>> GetAllClientsAsync()
         {
-            return await _context.Clients.ToListAsync();
+            return (await GetAllGenericAsync()).ToList();
         }
         public async Task<Client> GetClientsByIdAsync(Guid id)
         {
-            var client = await _context.Clients.FirstOrDefaultAsync(m => m.ClientId == id);
+            var client = await GetGenericByIdAsync(id);
 
             // if statement throws an exception should a null be a possible return value!
-
-            if (client == null)
+            if(client == null)
             {
-               
-                throw new InvalidOperationException("Client does not exist!");
+                throw new InvalidOperationException($"Client with ID {id} does not exist.");
             }
             return client;
         }
+
         public async Task AddClientssAsync(Client client)
         {
             client.ClientId = Guid.NewGuid();
-            _context.Add(client);
-            await _context.SaveChangesAsync();
+            await AddGenericAsync(client);
         }
+
         public async Task UpdateClientsAsync(Client client)
         {
-            _context.Update(client);
-            await _context.SaveChangesAsync();
+            var existingProject = await GetGenericByIdAsync(client.ClientId);
+
+            if (existingProject == null)
+            {
+                throw new InvalidOperationException($"Client with ID: {client.ClientId} does not exist.");
+            }
+            await UpdateGenericAsync(client);
         }
         public async Task DeleteClientsAsync(Guid id)
         {
-            var client = await _context.Projects.FindAsync(id);
 
-            if (client != null)
+            var client = await GetGenericByIdAsync(id);
+            if (client == null)
             {
-                _context.Projects.Remove(client);
-                await _context.SaveChangesAsync();
+                throw new InvalidOperationException($"Client with ID: {id} does not exist.");
             }
+            await DeleteGenericAsync(id);
         }
         public async Task<bool> ClientExistsAsync(Guid id)
         {
-            return await _context.Clients.AnyAsync(n => n.ClientId == id);
+            return await GenericExistsAsync(id);
         }
     }
 }
