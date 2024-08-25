@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-// interface class for the generic repository pattern - defines GenericRepo methodss
+/**defines GenericRepo methods
+ The interface for the newly created Generic Repository class.*/
 
 namespace TelemetryPortal_MVC.Repositories
 {
