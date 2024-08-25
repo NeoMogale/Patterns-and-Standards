@@ -18,12 +18,13 @@
 *.zip
 *.tar.gz
 *.rar
+*.vs/
 
 # ignore .json files
 *.json
 
 # ignore vs files
-.vs/
+
 
 # additional files
 .bin
