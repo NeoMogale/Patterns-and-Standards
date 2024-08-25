@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TelemetryPortal_MVC.Data;
+using TelemetryPortal_MVC.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+// DEPENDENCY INJECTION 
+
+builder.Services.AddScoped(typeof(IGenericRepo<>),typeof(GenericRepo<>));
+builder.Services.AddScoped<IProjectsRepo, ProjectsRepo>();
+builder.Services.AddScoped<IClientsRepo,  ClientsRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +33,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+   
     app.UseHsts();
 }
 
@@ -34,6 +41,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 
 app.UseAuthorization();
 
