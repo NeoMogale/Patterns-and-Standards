@@ -39,5 +39,8 @@ TelemetryPortal_MVC.Web: The main web application, responsible for the user inte
 ### Future Enhancements:
 
 Unit Testing: Adding unit tests for repository and controller layers.
+
 Role-Based Access Control: Implementing user roles to manage access levels within the application.
+
 API Integration: Exposing data management functionalities through a RESTful API.
+
