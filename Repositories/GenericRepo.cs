@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TelemetryPortal_MVC.Data;
 
+// DbContext referenced in this class
 
 namespace TelemetryPortal_MVC.Repositories
 {
