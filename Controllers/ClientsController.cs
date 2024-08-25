@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TelemetryPortal_MVC.Data;
@@ -13,17 +14,17 @@ namespace TelemetryPortal_MVC.Controllers
 {
     public class ClientsController : Controller
     {
-        private readonly IClientsRepo _clientsRepo;
+        private readonly IGenericRepo<Client> _genericRepo;
 
-        public ClientsController(IClientsRepo clientsRepo)
+        public ClientsController(IGenericRepo<Client> genericRepo)
         {
-            _clientsRepo = clientsRepo;
+            _genericRepo = genericRepo;
         }
 
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            return View(await _clientsRepo.GetAllClientsAsync());
+            return View(await _genericRepo.GetAllGenericAsync());
         }
 
         // GET: Clients/Details/5
@@ -34,7 +35,7 @@ namespace TelemetryPortal_MVC.Controllers
                 return NotFound();
             }
 
-            var client = await _clientsRepo.GetClientsByIdAsync(id.Value);
+            var client = await _genericRepo.GetGenericByIdAsync(id.Value);
                // .FirstOrDefaultAsync(m => m.ClientId == id);
             if (client == null)
             {
@@ -59,7 +60,7 @@ namespace TelemetryPortal_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _clientsRepo.AddClientssAsync(client);
+                await _genericRepo.AddGenericAsync(client);
                 return RedirectToAction(nameof(Index));
                 //client.ClientId = Guid.NewGuid();
                 //_context.Add(client);
@@ -77,7 +78,7 @@ namespace TelemetryPortal_MVC.Controllers
                 return NotFound();
             }
 
-            var client = await _clientsRepo.GetClientsByIdAsync(id.Value);
+            var client = await _genericRepo.GetGenericByIdAsync(id.Value);
             if (client == null)
             {
                 return NotFound();
@@ -102,11 +103,11 @@ namespace TelemetryPortal_MVC.Controllers
                 try
                 {
                     // _context.Update(client);
-                    await _clientsRepo.UpdateClientsAsync(client);
+                    await _genericRepo.UpdateGenericAsync(client);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await _clientsRepo.ClientExistsAsync(client.ClientId))
+                    if (!await _genericRepo.GenericExistsAsync(client.ClientId))
                     {
                         return NotFound();
                     }
@@ -128,7 +129,7 @@ namespace TelemetryPortal_MVC.Controllers
                 return NotFound();
             }
 
-            var client = await _clientsRepo.GetClientsByIdAsync(id.Value);
+            var client = await _genericRepo.GetGenericByIdAsync(id.Value);
                // .FirstOrDefaultAsync(m => m.ClientId == id);
             if (client == null)
             {
@@ -144,13 +145,13 @@ namespace TelemetryPortal_MVC.Controllers
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
 
-            await _clientsRepo.DeleteClientsAsync(id);
+            await _genericRepo.DeleteGenericAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         private async Task<bool> ClientExists(Guid id)
         {
-            return await _clientsRepo.ClientExistsAsync(id);
+            return await _genericRepo.GenericExistsAsync(id);
         }
     }
 }
