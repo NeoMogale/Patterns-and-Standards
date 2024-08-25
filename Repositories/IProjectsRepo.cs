@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TelemetryPortal_MVC.Models;
@@ -9,7 +9,7 @@ using TelemetryPortal_MVC.Models;
 namespace TelemetryPortal_MVC.Repositories
 {
 
-    public interface IProjectsRepo
+    public interface IProjectsRepo : IGenericRepo<Project>
     {
         Task<List<Project>> GetAllProjectsAsync();
         Task<Project> GetProjectsByIdAsync(Guid id);
