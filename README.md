@@ -2,10 +2,13 @@
 
 # CMPG323-Project-3--35407972
 
-## TelemetryPortal_MVC
-![TelemetryMVC_Home](https://github.com/user-attachments/assets/cba3057d-bc36-4ae3-9108-20dd25cc5255)
+## Telemetry Portal Management Portal
 
+![TelemetryMVC_Home](https://github.com/user-attachments/assets/fcccd0ce-f8b9-4dc6-a6b4-a039c879991d)
+
+### Overview: 
 TelemetryPortal_MVC is a web application designed for managing project and client data through CRUD (Create, Read, Update, Delete) operations. This application is built with clean architecture principles, focusing on modularity, scalability, and best practices in coding standards. It utilizes the repository pattern to streamline data access, ensuring efficient management of projects and clients.
+For this project, I have been tasked with enchancing and improving the existing MVC application while paying specific attention to architectural patterns, coding principles, and design patterns.
 
 ### Key Features:
 Project Management: Create, view, edit, and delete projects.
@@ -14,8 +17,18 @@ Clean Architecture: Ensures maintainability by separating concerns.
 Repository Pattern: Implements both generic and specific repositories for flexible data handling.
 ASP.NET Core MVC: Built with ASP.NET Core MVC framework for a robust and flexible development environment.
 
+### Functional Requirements:
+Data Access Operations: Implement repository classes for both Projects and Clients.
+Repository Pattern: Transfer all data access operations from controllers to repository classes.
+Controller Integration: Implement the use of repository classes in controllers.
 
-### Getting Started - Prerequisites:
+### Non-Functional Requirements:
+Clean Code: Ensure adherence to coding standards and best practices.
+Modularity: Maintain separation of concerns for easier maintenance and scalability.
+Security: Ensure that no credentials are stored on GitHub.
+
+### To the client
+#### Getting Started - Prerequisites:
 
 Before you begin, ensure you have the following installed:
 
