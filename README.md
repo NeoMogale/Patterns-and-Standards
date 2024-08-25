@@ -43,14 +43,14 @@ Defines the data models used throughout the application.
 #### TelemetryPortal_MVC.Web: 
 The main web application, responsible for the user interface and controllers.
 
-### Hosting the MVC Application:
+### Hosting the MVC Application
 The Telemetry Management Portal Application has been published via Visual Studio and deployed to Azure.
 
 
 ![DeploymentImage](https://github.com/user-attachments/assets/427c92dc-1e7b-484a-ba80-beeb9c97798a)
 
 
-### Future Enhancements:
+### Future Enhancements
 #### Unit Testing: 
 Adding unit tests for repository and controller layers.
 #### Role-Based Access Control: 
@@ -58,7 +58,7 @@ Implementing user roles to manage access levels within the application.
 #### API Integration: 
 Exposing data management functionalities through a RESTful API.
 
-### Using the Application:
+### Using the Application
 #### Manage user roles and access:
 New user should Register.
 Then proceed to Account Comfirmation.
@@ -72,12 +72,12 @@ Create, view, edit, or delete projects as needed.
 Navigate to the Clients section.
 Manage client information associated with your projects.
 
-### Link to Resource Group:
+### Resource Group
 https://portal.azure.com/#@nwuac.onmicrosoft.com/resource/subscriptions/c4031aae-2e16-4167-8093-e8189511611b/resourceGroups/rgCMPG323Proj3/overview
 
-### Link to API (Deployed):
+### Deployed MVC Application
 https://cmpg323telemetryportalmvc.azurewebsites.net/
 
-### Havard Reference List:
+### Havard Reference List
 https://github.com/NeoMogale/CMPG323-Project-3--35407972/blob/main/Project%203%20Reference%20List.docx
 
