@@ -33,28 +33,16 @@ namespace TelemetryPortal_MVC.Repositories
 
         public async Task AddClientssAsync(Client client)
         {
-            client.ClientId = Guid.NewGuid();
             await AddGenericAsync(client);
         }
 
         public async Task UpdateClientsAsync(Client client)
         {
-            var existingProject = await GetGenericByIdAsync(client.ClientId);
-
-            if (existingProject == null)
-            {
-                throw new InvalidOperationException($"Client with ID: {client.ClientId} does not exist.");
-            }
             await UpdateGenericAsync(client);
         }
         public async Task DeleteClientsAsync(Guid id)
         {
 
-            var client = await GetGenericByIdAsync(id);
-            if (client == null)
-            {
-                throw new InvalidOperationException($"Client with ID: {id} does not exist.");
-            }
             await DeleteGenericAsync(id);
         }
         public async Task<bool> ClientExistsAsync(Guid id)
